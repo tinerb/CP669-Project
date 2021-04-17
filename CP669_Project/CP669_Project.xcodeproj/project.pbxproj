@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E012B78E262B19F300A2D142 /* LaundryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012B78D262B19F300A2D142 /* LaundryList.swift */; };
+		E012B793262B1F7900A2D142 /* addViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012B792262B1F7900A2D142 /* addViewController.swift */; };
+		E012B798262B208A00A2D142 /* wardrobeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012B797262B208A00A2D142 /* wardrobeViewController.swift */; };
 		E03B36E226010B570029464F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03B36E126010B570029464F /* AppDelegate.swift */; };
 		E03B36E426010B570029464F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03B36E326010B570029464F /* SceneDelegate.swift */; };
 		E03B36E626010B570029464F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03B36E526010B570029464F /* ViewController.swift */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E012B78D262B19F300A2D142 /* LaundryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryList.swift; sourceTree = "<group>"; };
+		E012B792262B1F7900A2D142 /* addViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addViewController.swift; sourceTree = "<group>"; };
+		E012B797262B208A00A2D142 /* wardrobeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wardrobeViewController.swift; sourceTree = "<group>"; };
 		E03B36DE26010B570029464F /* CP669_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CP669_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E03B36E126010B570029464F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E03B36E326010B570029464F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +121,9 @@
 				E03B371426010BB00029464F /* Item.swift */,
 				E03B371926010E590029464F /* ItemList.swift */,
 				E03B371E260111070029464F /* SharingList.swift */,
+				E012B78D262B19F300A2D142 /* LaundryList.swift */,
+				E012B792262B1F7900A2D142 /* addViewController.swift */,
+				E012B797262B208A00A2D142 /* wardrobeViewController.swift */,
 			);
 			path = CP669_Project;
 			sourceTree = "<group>";
@@ -269,10 +278,13 @@
 			files = (
 				E03B371526010BB00029464F /* Item.swift in Sources */,
 				E03B371A26010E590029464F /* ItemList.swift in Sources */,
+				E012B793262B1F7900A2D142 /* addViewController.swift in Sources */,
+				E012B798262B208A00A2D142 /* wardrobeViewController.swift in Sources */,
 				E03B371F260111070029464F /* SharingList.swift in Sources */,
 				E03B36E626010B570029464F /* ViewController.swift in Sources */,
 				E03B36E226010B570029464F /* AppDelegate.swift in Sources */,
 				E03B36E426010B570029464F /* SceneDelegate.swift in Sources */,
+				E012B78E262B19F300A2D142 /* LaundryList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
