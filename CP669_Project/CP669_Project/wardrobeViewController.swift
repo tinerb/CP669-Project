@@ -21,7 +21,6 @@ class wardrobeViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidAppear(true)
         _ = SharingList()
         itemList = SharingList.sharedList.itemList
-        itemList?.setClothes(clothes: itemList?.getClothes().filter( { $0.getIsLaundry() == false }) ?? [])
         tableView.reloadData()
     }
 
@@ -33,7 +32,7 @@ class wardrobeViewController: UIViewController, UITableViewDelegate, UITableView
             cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
         }
 
-        guard let item = itemList?.clothes[indexPath.row] else {
+        guard let item = itemList?.getClothes().filter( { $0.getIsLaundry() == false })[indexPath.row] else {
             return cell ?? UITableViewCell()
         }
         
@@ -44,6 +43,6 @@ class wardrobeViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        itemList?.clothes.count ?? 0
+        itemList?.getClothes().filter( { $0.getIsLaundry() == false }).count ?? 0
     }
 }

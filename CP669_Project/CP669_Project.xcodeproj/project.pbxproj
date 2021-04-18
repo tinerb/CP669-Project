@@ -26,6 +26,8 @@
 		E03B371526010BB00029464F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03B371426010BB00029464F /* Item.swift */; };
 		E03B371A26010E590029464F /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03B371926010E590029464F /* ItemList.swift */; };
 		E03B371F260111070029464F /* SharingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03B371E260111070029464F /* SharingList.swift */; };
+		E0D5B9C6262C9D410048CC21 /* weatherStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5B9C5262C9D410048CC21 /* weatherStructs.swift */; };
+		E0D5B9CB262C9D7D0048CC21 /* weatherNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D5B9CA262C9D7D0048CC21 /* weatherNetwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		E03B371426010BB00029464F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		E03B371926010E590029464F /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		E03B371E260111070029464F /* SharingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingList.swift; sourceTree = "<group>"; };
+		E0D5B9C5262C9D410048CC21 /* weatherStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherStructs.swift; sourceTree = "<group>"; };
+		E0D5B9CA262C9D7D0048CC21 /* weatherNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weatherNetwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,8 @@
 				AB69D293262BC9150058590D /* RandomOutfitViewController.swift */,
 				AB69D289262BC4F10058590D /* LaundryTableViewCell.swift */,
 				E012B797262B208A00A2D142 /* wardrobeViewController.swift */,
+				E0D5B9C5262C9D410048CC21 /* weatherStructs.swift */,
+				E0D5B9CA262C9D7D0048CC21 /* weatherNetwork.swift */,
 			);
 			path = CP669_Project;
 			sourceTree = "<group>";
@@ -300,7 +306,9 @@
 				E012B798262B208A00A2D142 /* wardrobeViewController.swift in Sources */,
 				E03B371F260111070029464F /* SharingList.swift in Sources */,
 				E03B36E626010B570029464F /* ViewController.swift in Sources */,
+				E0D5B9CB262C9D7D0048CC21 /* weatherNetwork.swift in Sources */,
 				AB69D28A262BC4F10058590D /* LaundryTableViewCell.swift in Sources */,
+				E0D5B9C6262C9D410048CC21 /* weatherStructs.swift in Sources */,
 				AB69D28F262BC8CC0058590D /* OutfitViewController.swift in Sources */,
 				E03B36E226010B570029464F /* AppDelegate.swift in Sources */,
 				E03B36E426010B570029464F /* SceneDelegate.swift in Sources */,
