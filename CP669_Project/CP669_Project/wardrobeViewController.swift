@@ -21,6 +21,7 @@ class wardrobeViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidAppear(true)
         _ = SharingList()
         itemList = SharingList.sharedList.itemList
+        itemList?.setClothes(clothes: itemList?.getClothes().filter( { $0.getIsLaundry() == false }) ?? [])
         tableView.reloadData()
     }
 

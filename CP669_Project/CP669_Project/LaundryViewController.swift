@@ -29,7 +29,7 @@ class LaundryViewController: UIViewController, UITableViewDelegate, UITableViewD
         itemList?.getClothes().forEach({ item in
             item.setisLaundry(isLaundry: false)
         })
-        
+        laundryItems = []
         tableView.reloadData()
     }
     

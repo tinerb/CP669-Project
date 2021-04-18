@@ -48,6 +48,8 @@ class RandomOutfitViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func refreshButtonAction(_ sender: Any) {
+        randomItem = []
+        randomIndices = []
         if let randomIndex = itemList?.getClothes().indices.randomElement(), let element = itemList?.getClothes()[randomIndex]  {
             self.randomIndices.append(randomIndex)
             randomItem.append(element)
