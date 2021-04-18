@@ -12,6 +12,8 @@ class ItemList: Codable {
     var clothes: [Item] = [Item]()
     var current : Int = 0
     
+    init(){}
+    
     func currentItem() -> Item{
         return self.clothes[current]
     }
@@ -36,6 +38,13 @@ class ItemList: Codable {
         self.clothes.append(item)
     }
     
+    func updateItem(item:Item, at index: Int){
+        guard index < clothes.count else {
+            return
+        }
+        self.clothes[index] = item
+    }
+    
     func deleteItem(index:Int){
         self.clothes.remove(at:index)
     }
@@ -55,4 +64,9 @@ class ItemList: Codable {
         let currentData = try NSKeyedArchiver.archivedData(withRootObject: current, requiringSecureCoding: true)
         try container.encode(currentData, forKey: .current)
     } //encoder
+    
+    init?(list: [Item], current: Int){
+        self.clothes = list
+        self.current = current
+    }
 }

@@ -36,11 +36,11 @@ class SharingList {
             itemList = try jsonDecoder.decode(ItemList.self, from: data)
            
         } catch {
+            itemList = ItemList(list: [], current: 0)
             print("cannot decode from the archive")
         }
         do{
             itemList?.setClothes(clothes: try jsonDecoder.decode([Item].self, from: data2))
-           
         } catch {
             print("cannot decode from the archive")
         }
@@ -57,12 +57,14 @@ class SharingList {
             print(jsonData)
             print("clothes encoded")
             print(jsonData2)
-        } catch {
-            print("cannot encode itemList")
+        } catch let error {
+            print("cannot load \(error.localizedDescription)")
         }
         do {
             try jsonData.write(to: fileURL, options: [])
             try jsonData2.write(to: fileURL2, options: [])
-        } catch { }
+        } catch let error {
+            print("cannot save \(error.localizedDescription)")
+        }
     }
 }

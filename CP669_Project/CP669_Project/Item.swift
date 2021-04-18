@@ -13,7 +13,15 @@ class Item: Codable {
     private var colour:String
     private var type:String
     private var desc:String
+    private var isLaundry: Bool = false
     
+    init(image: UIImage, colour: String, type: String, desc: String, isLaundry: Bool){
+        self.image = image
+        self.colour = colour
+        self.type = type
+        self.desc = desc
+        self.isLaundry = isLaundry
+    }
     func setImage(image: UIImage?){
         self.image = image
     }
@@ -34,6 +42,10 @@ class Item: Codable {
         self.type = type
     }
     
+    func setisLaundry(isLaundry: Bool){
+        self.isLaundry = isLaundry
+    }
+    
     func getType() -> String{
         return self.type
     }
@@ -46,7 +58,11 @@ class Item: Codable {
         return self.desc
     }
     
-    init?(image: UIImage?, colour: String, type: String, desc: String){
+    func getIsLaundry() -> Bool{
+        return self.isLaundry
+    }
+    
+    init?(image: UIImage?, colour: String, type: String, desc: String, isLaundry: Bool){
         guard !colour.isEmpty else {
             return nil
         }
@@ -57,6 +73,7 @@ class Item: Codable {
         self.colour = colour
         self.type = type
         self.desc = desc
+        self.isLaundry = isLaundry
     }
     
     public enum CodingKeys: String, CodingKey {
@@ -64,6 +81,7 @@ class Item: Codable {
         case colour
         case type
         case desc
+        case isLaundry
     }
     
     required init(from decoder: Decoder) throws {
@@ -76,6 +94,9 @@ class Item: Codable {
         type = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(typeData) as? String ?? "???"
         let descData = try container.decode(Data.self, forKey: .desc)
         desc = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(descData) as? String ?? "???"
+        let isLaundryData = try container.decode(Data.self, forKey: .isLaundry)
+        isLaundry = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(isLaundryData) as? Bool ?? false
+
     } // decoder
         
     func encode(to encoder: Encoder) throws {
@@ -88,5 +109,8 @@ class Item: Codable {
         try container.encode(typeData, forKey: .type)
         let descData = try NSKeyedArchiver.archivedData(withRootObject: desc, requiringSecureCoding: true)
         try container.encode(descData, forKey: .desc)
+        let isLaundryData = try NSKeyedArchiver.archivedData(withRootObject: isLaundry, requiringSecureCoding: true)
+        try container.encode(isLaundryData, forKey: .isLaundry)
+
     } // encoder
 }
