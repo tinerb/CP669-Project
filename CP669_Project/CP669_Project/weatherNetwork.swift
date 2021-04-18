@@ -12,8 +12,8 @@ class NetworkService {
     
     let URL_SAMPLE = "https://api.openweathermap.org/data/2.5/onecall?lat=60.99&lon=30.9&appid=7f3f49ca8bd7f7eb86a0865283ad0fa8"
     let URL_API_KEY = "7f3f49ca8bd7f7eb86a0865283ad0fa8"
-    var URL_LATITUDE = "60.99"
-    var URL_LONGITUDE = "30.0"
+    var URL_LATITUDE = "0"
+    var URL_LONGITUDE = "0"
     var URL_GET_ONE_CALL = ""
     let URL_BASE = "https://api.openweathermap.org/data/2.5"
     
@@ -24,20 +24,12 @@ class NetworkService {
         return URL_BASE + URL_GET_ONE_CALL
     }
     
-    func setLatitude(_ latitude: String) {
-        URL_LATITUDE = latitude
-    }
-    
     func setLatitude(_ latitude: Double) {
-        setLatitude(String(latitude))
+        URL_LATITUDE = String(latitude)
     }
     
-    func setLongitude(_ longitude: String) {
-        URL_LONGITUDE = longitude
-    }
-    
-    func setLongitude(_ longitude: Double) {
-        setLongitude(String(longitude))
+    func setLongitude(_ longitude: Double){
+        URL_LONGITUDE = String(longitude)
     }
     
     func getWeather(onSuccess: @escaping (Result) -> Void, onError: @escaping (String) -> Void) {
@@ -45,20 +37,16 @@ class NetworkService {
             onError("Error building URL")
             return
         }
-        
         let task = session.dataTask(with: url) { (data, response, error) in
-            
             DispatchQueue.main.async {
                 if let error = error {
                     onError(error.localizedDescription)
                     return
                 }
-                
                 guard let data = data, let response = response as? HTTPURLResponse else {
                     onError("Invalid data or response")
                     return
                 }
-                
                 do {
                     if response.statusCode == 200 {
                         let items = try JSONDecoder().decode(Result.self, from: data)
@@ -70,7 +58,6 @@ class NetworkService {
                     onError(error.localizedDescription)
                 }
             }
-            
         }
         task.resume()
     }

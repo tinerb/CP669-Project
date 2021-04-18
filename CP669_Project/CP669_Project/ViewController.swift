@@ -27,6 +27,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if (SharingList.sharedList.itemList == nil){
             SharingList.sharedList.itemList = ItemList()
         }
+        //getLocation() causes error
         getWeather()
     }
     
@@ -43,12 +44,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     min = (weatherResult?.hourly[i].temp)!
                 }
             }
-            currentTemp.text = String((weatherResult?.current.temp)!)
-            maxTemp.text = String(max)
-            minTemp.text = String(min)
+            currentTemp.text = String((weatherResult?.current.temp)!) + "°F"
+            maxTemp.text = String(max) + "°F"
+            minTemp.text = String(min) + "°F"
             image.image = UIImage(named:weatherResult!.current.weather[0].icon)
         }) { (errorMessage) in
                 debugPrint(errorMessage)
+        }
+    }
+    
+    func getLocation() {
+        locationManger = CLLocationManager()
+        locationManger.delegate = self
+        locationManger.desiredAccuracy = kCLLocationAccuracyBest
+        locationManger.requestWhenInUseAuthorization()
+        if (CLLocationManager.locationServicesEnabled()) {
+            locationManger.requestLocation()
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            self.currentlocation = location
+            
+            let latitude: Double = self.currentlocation!.coordinate.latitude
+            let longitude: Double = self.currentlocation!.coordinate.longitude
+                
+            NetworkService.shared.setLatitude(latitude)
+            NetworkService.shared.setLongitude(longitude)
         }
     }
 }
