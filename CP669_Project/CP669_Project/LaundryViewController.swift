@@ -39,7 +39,7 @@ class LaundryViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
 
         let item = laundryItems[indexPath.row]
-        cell.typeLabel?.text = item.getDesc()
+        cell.typeLabel?.text = item.getType()
         cell.imgView?.image = item.getImage()
         cell.cleanAction = {
             item.setisLaundry(isLaundry: false)
