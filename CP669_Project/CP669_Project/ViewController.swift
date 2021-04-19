@@ -27,7 +27,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if (SharingList.sharedList.itemList == nil){
             SharingList.sharedList.itemList = ItemList()
         }
-        //getLocation() causes error
+        getLocation() //causes error
         getWeather()
     }
     
@@ -73,6 +73,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             NetworkService.shared.setLatitude(latitude)
             NetworkService.shared.setLongitude(longitude)
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
     }
 }
 
