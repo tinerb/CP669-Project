@@ -50,6 +50,9 @@
                                     <constraint firstAttribute="height" constant="30" id="Qfg-JW-KIy"/>
                                 </constraints>
                                 <state key="normal" title="Refresh Weather"/>
+                                <connections>
+                                    <action selector="refreshWeatherAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="23Y-lM-ifx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGm-5s-Lxg">
                                 <rect key="frame" x="219" y="476" width="147" height="30"/>

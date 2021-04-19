@@ -31,6 +31,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         getWeather()
     }
     
+    @IBAction func refreshWeatherAction(_ sender: Any) {
+        getWeather()
+    }
+    
     func getWeather() {
         var max: Double = -1000
         var min: Double = 1000
