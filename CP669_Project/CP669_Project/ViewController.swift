@@ -30,6 +30,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         getLocation() //causes error
         getWeather()
     }
+    @IBAction func refresh(_ sender: Any) {
+        getLocation()
+        getWeather()
+    }
     
     @IBAction func refreshWeatherAction(_ sender: Any) {
         getWeather()
@@ -48,6 +52,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     min = (weatherResult?.hourly[i].temp)!
                 }
             }
+            SharingList.sharedList.itemList?.setWeather(weather: weatherResult!.current.temp)
             currentTemp.text = String((weatherResult?.current.temp)!) + "°F"
             maxTemp.text = String(max) + "°F"
             minTemp.text = String(min) + "°F"
@@ -83,4 +88,3 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print(error.localizedDescription)
     }
 }
-

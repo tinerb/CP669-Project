@@ -9,10 +9,13 @@ class RandomOutfitViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet weak var tableView: UITableView!
     var randomItem: [Item] = []
-
     var itemList: ItemList?
     var randomIndices: [Int] = []
-
+    var coats: [Item] = []
+    var shirts: [Item] = []
+    var pants: [Item] = []
+    var shorts: [Item] = []
+    var tshirts: [Item] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,39 +28,94 @@ class RandomOutfitViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidAppear(true)
         _ = SharingList()
         itemList = SharingList.sharedList.itemList
+        coats = (itemList?.getClothes().filter({ $0.getType() == "coat" }))!
+        pants = (itemList?.getClothes().filter({ $0.getType() == "pants" }))!
+        shorts = (itemList?.getClothes().filter({ $0.getType() == "shorts" }))!
+        shirts = (itemList?.getClothes().filter({ $0.getType() == "shirt" }))!
+        tshirts = (itemList?.getClothes().filter({ $0.getType() == "t-shirt" }))!
 
-        if let randomIndex = itemList?.getClothes().indices.randomElement(), let element = itemList?.getClothes()[randomIndex]  {
-            self.randomIndices.append(randomIndex)
-            randomItem.append(element)
+        if itemList!.getWeather() < 40{
+            if let randomIndex = coats.indices.randomElement() {
+                let element = coats[randomIndex]
+                self.randomIndices.append(randomIndex)
+                randomItem.append(element)
+            }
         }
-        
-        if let randomIndex = itemList?.getClothes().indices.randomElement(), let element = itemList?.getClothes()[randomIndex]  {
-            self.randomIndices.append(randomIndex)
-            randomItem.append(element)
+        if itemList!.getWeather() > 60{
+            if let randomIndex = tshirts.indices.randomElement() {
+                let element = tshirts[randomIndex]
+                self.randomIndices.append(randomIndex)
+                randomItem.append(element)
+            }
+            if let randomIndex = shorts.indices.randomElement() {
+                let element = shorts[randomIndex]
+                self.randomIndices.append(randomIndex)
+                randomItem.append(element)
+            }
+        }
+        else if itemList!.getWeather() < 60{
+            if let randomIndex = shirts.indices.randomElement() {
+                let element = shirts[randomIndex]
+                self.randomIndices.append(randomIndex)
+                randomItem.append(element)
+            }
+            if let randomIndex = pants.indices.randomElement() {
+                let element = pants[randomIndex]
+                self.randomIndices.append(randomIndex)
+                randomItem.append(element)
+            }
         }
         
         tableView.reloadData()
     }
     
     @IBAction func confirmButtonAction(_ sender: Any) {
-        for (index, value) in randomItem.enumerated() {
+        for (_, value) in randomItem.enumerated() {
             value.setisLaundry(isLaundry: true)
-            itemList?.updateItem(item: value, at: self.randomIndices[index])
+            for i in 0...(itemList?.getClothes().count)!{
+                if itemList?.getClothes()[i].getImage() == value.getImage() && itemList?.getClothes()[i].getType() == value.getType() && itemList?.getClothes()[i].getColour() == value.getColour() && itemList?.getClothes()[i].getDesc() == value.getDesc(){
+                    itemList?.updateItem(item: value, at: i)
+                    break
+                }
+            }
         }
+        
         self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func refreshButtonAction(_ sender: Any) {
         randomItem = []
         randomIndices = []
-        if let randomIndex = itemList?.getClothes().indices.randomElement(), let element = itemList?.getClothes()[randomIndex]  {
-            self.randomIndices.append(randomIndex)
-            randomItem.append(element)
+        if itemList!.weather < 40{
+            if let randomIndex = coats.indices.randomElement() {
+                let element = coats[randomIndex]
+                self.randomIndices.append(randomIndex)
+                randomItem.append(element)
+            }
         }
-        
-        if let randomIndex = itemList?.getClothes().indices.randomElement(), let element = itemList?.getClothes()[randomIndex]  {
-            self.randomIndices.append(randomIndex)
-            randomItem.append(element)
+        if itemList!.weather > 60{
+            if let randomIndex = tshirts.indices.randomElement() {
+                let element = tshirts[randomIndex]
+                self.randomIndices.append(randomIndex)
+                randomItem.append(element)
+            }
+            if let randomIndex = shorts.indices.randomElement() {
+                let element = shorts[randomIndex]
+                self.randomIndices.append(randomIndex)
+                randomItem.append(element)
+            }
+        }
+        else if itemList!.weather < 60{
+            if let randomIndex = shirts.indices.randomElement() {
+                let element = shirts[randomIndex]
+                self.randomIndices.append(randomIndex)
+                randomItem.append(element)
+            }
+            if let randomIndex = pants.indices.randomElement() {
+                let element = pants[randomIndex]
+                self.randomIndices.append(randomIndex)
+                randomItem.append(element)
+            }
         }
         
         tableView.reloadData()

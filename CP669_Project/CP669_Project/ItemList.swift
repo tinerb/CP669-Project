@@ -11,8 +11,17 @@ import UIKit
 class ItemList: Codable {
     var clothes: [Item] = [Item]()
     var current : Int = 0
+    var weather : Double = 0
     
     init(){}
+    
+    func getWeather() -> Double{
+        return self.weather
+    }
+    
+    func setWeather(weather: Double){
+        self.weather = weather
+    }
     
     func currentItem() -> Item{
         return self.clothes[current]

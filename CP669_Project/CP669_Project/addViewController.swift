@@ -15,12 +15,12 @@ class addViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var typePicker: UIPickerView!
     
     
-    var selectedColor: String = ""
-    var selectedType: String = ""
+    var selectedColor: String = "white"
+    var selectedType: String = "pants"
     var imagePicker: UIImagePickerController!
     
     var color = ["white", "black", "red", "yellow", "orange", "purple", "pink", "green"]
-    var type = ["pants", "shirt", "t-shirt", "coat"]
+    var type = ["pants", "shorts", "shirt", "t-shirt", "coat"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -39,7 +39,7 @@ class LaundryViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
 
         let item = laundryItems[indexPath.row]
-        cell.typeLabel?.text = item.getDesc()
+        cell.typeLabel?.text = item.getType()
         cell.imgView?.image = item.getImage()
         cell.cleanAction = {
             item.setisLaundry(isLaundry: false)
@@ -50,6 +50,11 @@ class LaundryViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
 
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         laundryItems.count

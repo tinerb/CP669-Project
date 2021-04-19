@@ -42,6 +42,11 @@ class wardrobeViewController: UIViewController, UITableViewDelegate, UITableView
 
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         itemList?.getClothes().filter( { $0.getIsLaundry() == false }).count ?? 0
     }
