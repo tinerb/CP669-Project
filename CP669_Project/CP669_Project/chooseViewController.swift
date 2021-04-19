@@ -30,10 +30,10 @@ class chooseViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var topType = ["shirt", "t-shirt", "coat"]
     var bottomType = ["pants", "shorts"]
     
-    var topSelectedColour: String = ""
-    var topSelectedType: String = ""
-    var bottomSelectedColour: String = ""
-    var bottomSelectedType: String = ""
+    var topSelectedColour: String = "white"
+    var topSelectedType: String = "shirt"
+    var bottomSelectedColour: String = "white"
+    var bottomSelectedType: String = "pants"
     
     override func viewDidLoad() {
         super.viewDidLoad()
