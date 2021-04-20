@@ -18,7 +18,8 @@ class addViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var selectedColor: String = "white"
     var selectedType: String = "pants"
     var imagePicker: UIImagePickerController!
-    
+    var sharingList = SharingList.sharedList
+
     var color = ["white", "black", "red", "yellow", "orange", "purple", "pink", "green"]
     var type = ["pants", "shorts", "shirt", "t-shirt", "coat"]
     
@@ -28,17 +29,16 @@ class addViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        _ = SharingList()
-    }
-    
     
     @IBAction func addButtonAction(_ sender: Any) {
         guard let item = Item(image: imageView.image, colour: selectedColor, type: selectedType, desc: descriptionTextfield.text ?? "", isLaundry: false) else {
             return
         }
-        SharingList.sharedList.itemList?.addItem(item: item)
+        sharingList.loadClothes()
+        sharingList.itemList?.addItem(item: item)
+        
+        sharingList.saveClothes()
+
         self.navigationController?.popViewController(animated: true)
     }
     

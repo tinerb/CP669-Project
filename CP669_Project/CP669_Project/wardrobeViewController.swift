@@ -19,7 +19,7 @@ class wardrobeViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        _ = SharingList()
+        SharingList.sharedList.loadClothes()
         itemList = SharingList.sharedList.itemList
         tableView.reloadData()
     }

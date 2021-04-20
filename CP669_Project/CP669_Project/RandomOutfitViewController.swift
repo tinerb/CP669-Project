@@ -26,7 +26,7 @@ class RandomOutfitViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        _ = SharingList()
+        SharingList.sharedList.loadClothes()
         itemList = SharingList.sharedList.itemList
         coats = (itemList?.getClothes().filter({ $0.getType() == "coat" }))!
         pants = (itemList?.getClothes().filter({ $0.getType() == "pants" }))!
@@ -80,6 +80,8 @@ class RandomOutfitViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
         
+        SharingList.sharedList.saveClothes()
+
         self.navigationController?.popToRootViewController(animated: true)
     }
     

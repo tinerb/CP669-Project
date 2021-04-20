@@ -11,25 +11,22 @@ class LaundryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
 
     var itemList: ItemList?
-    var laundryItems: [Item] = []
-    
+    var laundryItems: [Item]  {
+        sharingList.itemList?.getClothes().filter( { $0.getIsLaundry() == true }) ?? []
+    }
+    let sharingList = SharingList.sharedList
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        _ = SharingList()
-        itemList = SharingList.sharedList.itemList
-        laundryItems = itemList?.getClothes().filter( { $0.getIsLaundry() == true }) ?? []
+        sharingList.loadClothes()
+        itemList = sharingList.itemList
         tableView.reloadData()
     }
-    
+
     @IBAction func clearBasketAction(_ sender: Any) {
         itemList?.getClothes().forEach({ item in
             item.setisLaundry(isLaundry: false)
         })
-        laundryItems = []
+        sharingList.saveClothes()
         tableView.reloadData()
     }
     
@@ -45,6 +42,7 @@ class LaundryViewController: UIViewController, UITableViewDelegate, UITableViewD
             item.setisLaundry(isLaundry: false)
             
             self.itemList?.updateItem(item: item, at: indexPath.row)
+            self.sharingList.saveClothes()
             self.tableView.reloadData()
         }
         return cell
